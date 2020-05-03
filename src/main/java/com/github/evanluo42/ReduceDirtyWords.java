@@ -1,28 +1,27 @@
 package com.github.evanluo42;
 
-import org.bukkit.configuration.InvalidConfigurationException;
-import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-import java.io.IOException;
-
 public final class ReduceDirtyWords extends JavaPlugin {
+    private static ReduceDirtyWords instance;
 
     @Override
     public void onEnable() {
+        instance = this;
         getLogger().info("[ReduceDirtyWords] The plugin has been loaded!");
+        Bukkit.getPluginManager().registerEvents(new BanPlayerAccount(), this);
+        Bukkit.getPluginManager().registerEvents(new DirtyWordWarning(), this);
         saveDefaultConfig();
-        YamlConfiguration config = new YamlConfiguration();
-        try{
-            config.load(new File("./config.yml"));
-        } catch(IOException | InvalidConfigurationException e){
-        }
     }
 
     @Override
     public void onDisable() {
         getLogger().info("[ReduceDirtyWords] The plugin has been closed!");
         saveConfig();
+    }
+
+    public static ReduceDirtyWords getInstance() {
+        return instance;
     }
 }
