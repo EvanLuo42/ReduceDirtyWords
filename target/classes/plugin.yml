@@ -1,0 +1,4 @@
+name: ReduceDirtyWords
+version: 1.0.0
+main: com.github.evanluo42.ReduceDirtyWords
+api-version: 1.13
