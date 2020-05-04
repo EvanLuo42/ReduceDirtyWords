@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+     id 'org.jetbrains.kotlin.jvm' version '1.3.72'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://repo.codemc.io/repository/nms/'
+    }
+
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compileOnly 'org.bukkit:craftbukkit:1.15.2-R0.1-SNAPSHOT'
+}
+
+group = 'com.github.EvanLuo42'
+version = '1.0.0'
+description = 'ReduceDirtyWords'
+sourceCompatibility = '1.8'
+
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
